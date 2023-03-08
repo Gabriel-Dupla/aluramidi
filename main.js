@@ -10,6 +10,7 @@ function tocaSom(seletorAudio) {
     }
  
 }
+let contadorDeEnter = 0;
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
 
@@ -26,16 +27,22 @@ for (let contador = 0; contador < listaDeTeclas.length; contador++) {
     
     tecla.onkeydown = function (evento) {
 
-        if(evento.code === 'Space' || evento.code === 'Enter' || evento.code === 'NumpadEnter') {
+        if(evento.code === 'Enter' || evento.code === 'NumpadEnter') {
+            if(evento.code === 'Enter') {
+                contadorDeEnter++;
+                if (contadorDeEnter >= 2) { 
+                   evento.preventDefault(); 
+                }
+            }
             tecla.classList.add('ativa');
-
         }
 
     }
 
     tecla.onkeyup = function () {
 		tecla.classList.remove('ativa');
-}
+        contadorDeEnter = 0;
+    }
 
 
 }
