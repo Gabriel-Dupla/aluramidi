@@ -4,7 +4,7 @@ function tocaSom(seletorAudio) {
     const elemento = document.querySelector(seletorAudio);
 
     if (elemento != null && elemento.localName === 'audio') {
-        if (audioAtual != null) { // se houver um áudio sendo reproduzido atualmente, pausa a reprodução antes de tocar o novo áudio
+        if (audioAtual != null) { 
             audioAtual.pause();
         }
         elemento.play();
