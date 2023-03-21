@@ -14,35 +14,52 @@ let contadorDeEnter = 0;
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
 
-for (let contador = 0; contador < listaDeTeclas.length; contador++) {
-
-    const tecla = listaDeTeclas[contador];
+for(let i=0; i <listaDeTeclas.length; i++) {
+    const tecla = listaDeTeclas[i];
     const instrumento = tecla.classList[1];
-    const idAudio = `#som_${instrumento}`;
+    // template string
+    const idAudio = `#som_${instrumento}`
 
-    tecla.onclick = function () {
-        tocaSom(idAudio);
-    }
+    // console.log(instrumento);
+    listaDeTeclas[i].onclick = function () {
+        tocaSom(idAudio)
+    };
 
-    
-    tecla.onkeydown = function (evento) {
-
-        if(evento.code === 'Enter' || evento.code === 'NumpadEnter') {
-            if(evento.code === 'Enter') {
+    tecla.onkeydown = function (event) {
+        console.log(event)
+        if (event.code === "Space" || event.code === "Enter") {
+            if(event.code === 'Enter') {
                 contadorDeEnter++;
                 if (contadorDeEnter >= 2) { 
-                   evento.preventDefault(); 
-                }
-            }
-            tecla.classList.add('ativa');
+                    event.preventDefault(); 
+               }
+             }
+             tecla.classList.add('ativa');
         }
 
-    }
-
     tecla.onkeyup = function () {
-		tecla.classList.remove('ativa');
+        tecla.classList.remove('ativa');
         contadorDeEnter = 0;
     }
 
-
+    }
 }
+    //     if(event.code === 'Enter' || event.code === 'NumpadEnter') {
+    //         if(event.code === 'Enter') {
+    //             contadorDeEnter++;
+    //             if (contadorDeEnter >= 2) { 
+    //                event.preventDefault(); 
+    //             }
+    //         }
+    //         tecla.classList.add('ativa');
+    //     }
+
+    // }
+
+    // tecla.onkeyup = function () {
+	// 	tecla.classList.remove('ativa');
+    //     contadorDeEnter = 0;
+    // }
+
+
+//}
